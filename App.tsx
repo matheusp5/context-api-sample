@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { UserProvider } from "./contexts/userContext";
+import Home from "./Screens/Home";
+
+export function Container({ children, styles }: any) {
+  return <View style={[{ marginHorizontal: 20 }, styles]}>{children}</View>;
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <UserProvider>
+      <Container styles={{ marginTop: 30 }}>
+        <Home />
+        <StatusBar style="auto" />
+      </Container>
+    </UserProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
